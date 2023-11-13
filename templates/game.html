@@ -23,11 +23,20 @@
         </div>
         </form>
         {% if messages %}
-        {% for message in messages %}
-        <div {% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %} role="alert">
-          {{ message }}
-        </div>
-        {% endfor %}
+          {% for message in messages %}
+            <div {% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %} role="alert">
+              {{ message }}
+            </div>
+            {% if message.tags == 'warning' %}
+              <img src="{% static 'equal.png' %}" alt="Equal Image" class="img-fluid">
+            {% endif %}
+            {% if message.tags == 'success' %}
+              <img src="{% static 'win.png' %}" alt="Win Image" class="img-fluid">
+            {% endif %}
+            {% if message.tags == 'info' %}
+              <img src="{% static 'lose.png' %}" alt="Lose Image" class="img-fluid">
+            {% endif %}
+          {% endfor %}
         {% endif %}
         <div class="btn-group">
         <a href="{% url 'home' %}" class="btn btn-danger mt-5 mx-2"> End Game </a>

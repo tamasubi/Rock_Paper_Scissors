@@ -1,0 +1,1 @@
+web: migrate.sh && gunicorn rock_project.wsgi --log-file -
